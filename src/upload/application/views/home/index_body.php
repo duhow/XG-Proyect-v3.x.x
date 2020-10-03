@@ -194,14 +194,8 @@
             <td style="width:18px; background: url('{img_path}dropdownmenu_arrow.png') no-repeat scroll 0 0 #8D9AA7;"></td>
         </tr>
         </tbody></table>
-        <input class="js_uniUrl" type="hidden" name="uni_url" id="uni_domain" value="">
+        <input class="js_uniUrl" type="hidden" name="uni_url" id="uni_domain" value="{base_path}">
         <div id="uni_selection" style="display: none;">
-                                    <script type="text/javascript">
-                        <!--
-                            select_uni('{base_path}'.replace('http://', '').replace('https://', '').slice(0, -1), '','');
-                        //-->
-                        </script>
-
             <div id="row-0" class="server-row " title="" onclick="select_uni(,);" onmouseover="highlightRow(&#39;row-0&#39;);this.style.cursor=&#39;pointer&#39;" onmouseout="unHighlightRow(&#39;row-0&#39;);">
                 <span class="uni_span "></span>
             </div>
