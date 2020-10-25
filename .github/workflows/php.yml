@@ -23,7 +23,7 @@ jobs:
       continue-on-error: true
 
     - name: Run phplint
-      uses: overtrue/phplint@master
+      uses: overtrue/phplint@2.1.0
       with:
         path: src/upload/
         options: --exclude=*.log
