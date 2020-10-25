@@ -26,14 +26,11 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      if: steps.composer-cache.outputs.cache-hit != 'true'
+      #if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+    - name: Run phpunit
+      run: composer test
 
     - name: Run phpcompatinfo
       run: composer run-script phpcompatinfo
-
-    - name: Run phpunit
-      run: composer run-script test
