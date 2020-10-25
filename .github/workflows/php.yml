@@ -1,4 +1,4 @@
-name: PHP Composer
+name: PHP Tests
 
 on:
   push:
@@ -6,39 +6,33 @@ on:
   pull_request:
 
 jobs:
-  build:
-
+  prepare:
     runs-on: ubuntu-20.04
-
     steps:
     - uses: actions/checkout@v2
 
     - name: Validate composer.json and composer.lock
       run: composer validate
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-
     - name: Install dependencies
-      #if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
-
+  test:
+    runs-on: ubuntu-20.04
+    needs: prepare
+    steps:
+      # Not fully working at the moment, ignore errors
     - name: Run phpunit
       run: composer test
       continue-on-error: true
 
     - name: Run phplint
       uses: overtrue/phplint@master
-      continue-on-error: true
       with:
         path: src/upload/
         options: --exclude=*.log
-
+  min-version:
+    runs-on: ubuntu-20.04
+    needs: prepare
+    steps:
     - name: Run phpcompatinfo
       run: composer run-script phpcompatinfo
