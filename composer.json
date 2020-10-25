@@ -7,7 +7,7 @@
     "license": "GPL-3.0-only",
     "require-dev": {
         "bartlett/php-compatinfo": "^5.4",
-        "phpunit/phpunit": "^9"
+        "phpunit/phpunit": "^8"
     },
     "autoload": {
         "classmap": [
