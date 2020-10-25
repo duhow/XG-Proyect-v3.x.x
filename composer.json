@@ -19,7 +19,7 @@
             "vendor/bin/phpcompatinfo analyser:run ./src"
         ],
         "test": [
-            "vendor/bin/phpunit tests --bootstrap src/upload/tests/bootstrap.php --include-path src/upload/tests/"
+            "vendor/bin/phpunit tests --bootstrap src/upload/tests/bootstrap.php --include-path $PWD/src/upload/tests/"
         ]
     }
 }
