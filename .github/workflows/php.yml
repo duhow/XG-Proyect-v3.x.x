@@ -9,7 +9,6 @@ jobs:
   build:
 
     runs-on: ubuntu-20.04
-    continue-on-error: true
 
     steps:
     - uses: actions/checkout@v2
@@ -32,6 +31,14 @@ jobs:
 
     - name: Run phpunit
       run: composer test
+      continue-on-error: true
+
+    - name: Run phplint
+      uses: overtrue/phplint@master
+      continue-on-error: true
+      with:
+        path: src/upload/
+        options: --exclude=*.log
 
     - name: Run phpcompatinfo
       run: composer run-script phpcompatinfo
