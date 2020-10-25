@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  prepare:
+  test:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
@@ -16,10 +16,7 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
-  test:
-    runs-on: ubuntu-20.04
-    needs: prepare
-    steps:
+
       # Not fully working at the moment, ignore errors
     - name: Run phpunit
       run: composer test
@@ -32,7 +29,14 @@ jobs:
         options: --exclude=*.log
   min-version:
     runs-on: ubuntu-20.04
-    needs: prepare
     steps:
+    - uses: actions/checkout@v2
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
     - name: Run phpcompatinfo
       run: composer run-script phpcompatinfo
