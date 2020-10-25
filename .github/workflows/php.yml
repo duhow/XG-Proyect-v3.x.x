@@ -35,3 +35,5 @@ jobs:
     - name: Run phpcompatinfo
       run: composer run-script phpcompatinfo
 
+    - name: Run phpunit
+      run: composer run-script test

@@ -6,11 +6,20 @@
     "homepage": "https://xgproyect.org",
     "license": "GPL-3.0-only",
     "require-dev": {
-        "bartlett/php-compatinfo": "^5.4"
+        "bartlett/php-compatinfo": "^5.4",
+        "phpunit/phpunit": "^9"
+    },
+    "autoload": {
+        "classmap": [
+            "src/upload/"
+        ]
     },
     "scripts": {
         "phpcompatinfo": [
             "vendor/bin/phpcompatinfo analyser:run ./src"
+        ],
+        "test": [
+            "vendor/bin/phpunit tests"
         ]
     }
 }
