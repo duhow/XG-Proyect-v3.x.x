@@ -2,7 +2,7 @@ name: PHP Tests
 
 on:
   push:
-    branches: [ master, xgp-* ]
+    branches: '**'
   pull_request:
 
 jobs:
